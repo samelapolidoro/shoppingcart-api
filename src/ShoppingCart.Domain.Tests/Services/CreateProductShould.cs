@@ -8,11 +8,10 @@ namespace KingShoppingCart.Domain.Tests.Services
     [TestClass]
     public class CreateProductShould
     {
-        IProductService? _productService;
-        Mock<IProductRepository>? _productRepositoryMock;
+        private readonly IProductService _productService;
+        private readonly Mock<IProductRepository> _productRepositoryMock;
 
-        [TestInitialize]
-        public void Setup()
+        public CreateProductShould()
         {
             _productRepositoryMock = new Mock<IProductRepository>();
 
@@ -24,9 +23,9 @@ namespace KingShoppingCart.Domain.Tests.Services
         {
             var product = new Product() { Name = "Product A", Price = 10.99m };
 
-            await _productService!.CreateAsync(product);
+            await _productService.CreateAsync(product);
 
-            _productRepositoryMock!.Verify(i => i.CreateAsync(It.IsAny<Product>()), Times.Once());
+            _productRepositoryMock.Verify(i => i.CreateAsync(It.IsAny<Product>()), Times.Once());
         }
 
         [TestMethod]
@@ -36,9 +35,9 @@ namespace KingShoppingCart.Domain.Tests.Services
         {
             var product = new Product() { Name = productName, Price = 10.99m };
 
-            await _productService!.CreateAsync(product);
+            await _productService.CreateAsync(product);
 
-            _productRepositoryMock!.Verify(i => i.CreateAsync(It.IsAny<Product>()), Times.Never());
+            _productRepositoryMock.Verify(i => i.CreateAsync(It.IsAny<Product>()), Times.Never());
         }
     }
 }
