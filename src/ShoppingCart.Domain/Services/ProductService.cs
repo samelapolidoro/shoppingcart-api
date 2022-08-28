@@ -1,7 +1,7 @@
-﻿using ShoppingCart.Domain.Contracts;
-using ShoppingCart.Domain.Entities;
+﻿using KingShoppingCart.Domain.Contracts;
+using KingShoppingCart.Domain.Entities;
 
-namespace ShoppingCart.Domain.Services
+namespace KingShoppingCart.Domain.Services
 {
     public class ProductService : IProductService
     {
@@ -9,7 +9,7 @@ namespace ShoppingCart.Domain.Services
 
         public ProductService(IProductRepository productRepository)
         {
-            this._productRepository = productRepository;
+            _productRepository = productRepository;
         }
 
         public async Task<Product> CreateAsync(Product product)

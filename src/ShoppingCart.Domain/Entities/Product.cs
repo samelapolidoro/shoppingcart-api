@@ -1,4 +1,4 @@
-﻿namespace ShoppingCart.Domain.Entities
+﻿namespace KingShoppingCart.Domain.Entities
 {
     public class Product
     {

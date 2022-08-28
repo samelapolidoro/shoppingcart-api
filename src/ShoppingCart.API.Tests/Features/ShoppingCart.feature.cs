@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace ShoppingCart.API.Tests.Features
+namespace KingShoppingCart.API.Tests.Features
 {
     using TechTalk.SpecFlow;
     using System;
@@ -65,7 +65,7 @@ namespace ShoppingCart.API.Tests.Features
             if (((testRunner.FeatureContext != null) 
                         && (testRunner.FeatureContext.FeatureInfo.Title != "ShoppingCart")))
             {
-                global::ShoppingCart.API.Tests.Features.ShoppingCartFeature.FeatureSetup(null);
+                global::KingShoppingCart.API.Tests.Features.ShoppingCartFeature.FeatureSetup(null);
             }
         }
         

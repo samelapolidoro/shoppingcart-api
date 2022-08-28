@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.API.Tests", "ShoppingCart.API.Tests\ShoppingCart.API.Tests.csproj", "{C3F47820-4850-4BCC-8D45-9D0F44BC828D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingShoppingCart.API.Tests", "ShoppingCart.API.Tests\KingShoppingCart.API.Tests.csproj", "{C3F47820-4850-4BCC-8D45-9D0F44BC828D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Domain", "ShoppingCart.Domain\ShoppingCart.Domain.csproj", "{E6BD5DC2-7B1E-49D8-A852-561EB03D90D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingShoppingCart.Domain", "ShoppingCart.Domain\KingShoppingCart.Domain.csproj", "{E6BD5DC2-7B1E-49D8-A852-561EB03D90D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Domain.Tests", "ShoppingCart.Domain.Tests\ShoppingCart.Domain.Tests.csproj", "{587BF6F7-946A-4F8D-BEEB-959CB25D57F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingShoppingCart.Domain.Tests", "ShoppingCart.Domain.Tests\KingShoppingCart.Domain.Tests.csproj", "{587BF6F7-946A-4F8D-BEEB-959CB25D57F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

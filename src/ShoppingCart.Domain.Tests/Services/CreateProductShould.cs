@@ -1,12 +1,12 @@
-﻿using Moq;
-using ShoppingCart.Domain.Contracts;
-using ShoppingCart.Domain.Entities;
-using ShoppingCart.Domain.Services;
+﻿using KingShoppingCart.Domain.Contracts;
+using KingShoppingCart.Domain.Entities;
+using KingShoppingCart.Domain.Services;
+using Moq;
 
-namespace ShoppingCart.Domain.Tests.Services
+namespace KingShoppingCart.Domain.Tests.Services
 {
     [TestClass]
-    public class AddProductShould
+    public class CreateProductShould
     {
         IProductService? _productService;
         Mock<IProductRepository>? _productRepositoryMock;
@@ -23,7 +23,7 @@ namespace ShoppingCart.Domain.Tests.Services
         public async Task WhenProductIsValidThenProductShouldBeCreated()
         {
             var product = new Product() { Name = "Product A", Price = 10.99m };
-            
+
             await _productService!.CreateAsync(product);
 
             _productRepositoryMock!.Verify(i => i.CreateAsync(It.IsAny<Product>()), Times.Once());
@@ -37,7 +37,7 @@ namespace ShoppingCart.Domain.Tests.Services
             var product = new Product() { Name = productName, Price = 10.99m };
 
             await _productService!.CreateAsync(product);
-            
+
             _productRepositoryMock!.Verify(i => i.CreateAsync(It.IsAny<Product>()), Times.Never());
         }
     }

@@ -1,6 +1,6 @@
-﻿using ShoppingCart.Domain.Entities;
+﻿using KingShoppingCart.Domain.Entities;
 
-namespace ShoppingCart.Domain.Contracts
+namespace KingShoppingCart.Domain.Contracts
 {
     public interface IProductService
     {

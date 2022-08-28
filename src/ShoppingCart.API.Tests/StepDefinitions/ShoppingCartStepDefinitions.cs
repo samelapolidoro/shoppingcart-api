@@ -1,7 +1,7 @@
 using System;
 using TechTalk.SpecFlow;
 
-namespace ShoppingCart.API.Tests.StepDefinitions
+namespace KingShoppingCart.API.Tests.StepDefinitions
 {
     [Binding]
     public class ShoppingCartStepDefinitions
