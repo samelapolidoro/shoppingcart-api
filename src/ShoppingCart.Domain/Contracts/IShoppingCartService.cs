@@ -5,5 +5,6 @@ namespace KingShoppingCart.Domain.Contracts
     public interface IShoppingCartService
     {
         Task<ShoppingCart> CreateAsync(ShoppingCart shoppingCart);
+        Task DeleteAsync(int shoppingCartId);
     }
 }

@@ -19,5 +19,15 @@ namespace KingShoppingCart.Domain.Services
 
             return await _shoppingCartRepository.CreateAsync(shoppingCart);
         }
+
+        public async Task DeleteAsync(int shoppingCartId)
+        {
+            var shoppingCart = await _shoppingCartRepository.GetByIdAsync(shoppingCartId);
+
+            if (shoppingCart == null)
+                return;
+
+            await _shoppingCartRepository.DeleteAsync(shoppingCart);
+        }
     }
 }
