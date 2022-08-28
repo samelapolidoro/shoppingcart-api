@@ -28,7 +28,10 @@
             if (itemInShoppingCart == null)
                 return;
 
-            Items.Remove(itemInShoppingCart);
+            DecreaseItemQuantity(itemInShoppingCart, quantity);
+
+            if (itemInShoppingCart.Quantity <= 0)
+                Items.Remove(itemInShoppingCart);
         }
 
         private ShoppingCartItem? GetItem(int productId)
@@ -39,6 +42,11 @@
         private void IncreaseItemQuantity(ShoppingCartItem item, decimal quantity)
         {
             item.Quantity += quantity;
+        }
+
+        private void DecreaseItemQuantity(ShoppingCartItem item, decimal quantity)
+        {
+            item.Quantity -= quantity;
         }
     }
 }
