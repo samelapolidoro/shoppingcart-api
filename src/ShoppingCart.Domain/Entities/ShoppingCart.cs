@@ -22,6 +22,15 @@
             IncreaseItemQuantity(itemInShoppingCart, item.Quantity);
         }
 
+        public void RemoveItem(int productId, decimal quantity)
+        {
+            var itemInShoppingCart = GetItem(productId);
+            if (itemInShoppingCart == null)
+                return;
+
+            Items.Remove(itemInShoppingCart);
+        }
+
         private ShoppingCartItem? GetItem(int productId)
         {
             return Items.FirstOrDefault(x => x.ProductId == productId);

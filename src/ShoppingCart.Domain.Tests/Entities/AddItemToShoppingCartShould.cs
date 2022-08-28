@@ -30,7 +30,7 @@ namespace KingShoppingCart.Domain.Tests.Entities
         }
 
         [TestMethod]
-        public void WhenItemAlreadyExistsInTheShoppingCartThenIncreaseQuantity()
+        public void WhenItemAlreadyExistsInTheShoppingCartThenShouldIncreaseQuantity()
         {
             var shoppingCart = CreateShoppingCart();
             var item = CreateShoppingCartItem(1, 1);
