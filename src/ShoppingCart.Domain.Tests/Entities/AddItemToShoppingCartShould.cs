@@ -50,11 +50,11 @@ namespace KingShoppingCart.Domain.Tests.Entities
 
         private ShoppingCartItem CreateShoppingCartItem(int productId, decimal quantity)
         {
-            return new ShoppingCartItem()
-            {
-                Product = new Product() { Id = productId },
-                Quantity = quantity,
-            };
+            var item = new ShoppingCartItem() { Product = new Product() { Id = productId } };
+
+            item.IncreaseQuantity(quantity);
+
+            return item;
         }
     }
 }

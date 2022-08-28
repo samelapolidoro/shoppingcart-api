@@ -11,7 +11,7 @@ namespace KingShoppingCart.Domain.Tests.Entities
             var productId = 1;
             var productPrice = 10.99m;
             var quantity = 0;
-            
+
             var item = CreateShoppingCartItem(productId, productPrice, quantity);
 
             item.IncreaseQuantity(1);
@@ -35,11 +35,11 @@ namespace KingShoppingCart.Domain.Tests.Entities
 
         private ShoppingCartItem CreateShoppingCartItem(int productId, decimal productPrice, decimal quantity)
         {
-            return new ShoppingCartItem()
-            {
-                Product = new Product() { Id = productId, Price = productPrice },
-                Quantity = quantity,
-            };
+            var item = new ShoppingCartItem() { Product = new Product() { Id = productId, Price = productPrice } };
+
+            item.IncreaseQuantity(quantity);
+
+            return item;
         }
     }
 }

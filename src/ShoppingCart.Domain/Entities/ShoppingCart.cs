@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public IList<ShoppingCartItem> Items { get; private set; } = new List<ShoppingCartItem>();
-        public decimal TotalAmount { get; set; }
+        public decimal TotalAmount { get; private set; }
 
 
         public void AddItem(ShoppingCartItem item)
@@ -13,13 +13,13 @@
                 return;
 
             var itemInShoppingCart = GetItem(item.Product!.Id);
-            if (itemInShoppingCart == null)
-            {
-                Items.Add(item);
-                return;
-            }
 
-            itemInShoppingCart.IncreaseQuantity(item.Quantity);
+            if (itemInShoppingCart == null)
+                Items.Add(item);
+            else
+                itemInShoppingCart.IncreaseQuantity(item.Quantity);
+
+            CalculateTotalAmount();
         }
 
         public void RemoveItem(int productId, decimal quantity)
@@ -32,6 +32,13 @@
 
             if (itemInShoppingCart.Quantity == 0)
                 Items.Remove(itemInShoppingCart);
+
+            CalculateTotalAmount();
+        }
+
+        private void CalculateTotalAmount()
+        {
+            TotalAmount = Items.Sum(i => i.TotalAmount);
         }
 
         private ShoppingCartItem? GetItem(int productId)

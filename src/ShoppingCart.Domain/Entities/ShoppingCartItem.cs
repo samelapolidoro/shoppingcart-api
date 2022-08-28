@@ -4,7 +4,7 @@
     {
         public int Id { get; set; }
         public Product Product { get; set; } = new Product();
-        public decimal Quantity { get; set; }
+        public decimal Quantity { get; private set; }
         public decimal TotalAmount { get; private set; }
 
         public void IncreaseQuantity(decimal quantity)
