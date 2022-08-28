@@ -9,17 +9,17 @@
 
         public void AddItem(ShoppingCartItem item)
         {
-            if (item.ProductId == default || item.Quantity <= 0)
+            if (item.Product?.Id == 0 || item.Quantity <= 0)
                 return;
 
-            var itemInShoppingCart = GetItem(item.ProductId);
+            var itemInShoppingCart = GetItem(item.Product!.Id);
             if (itemInShoppingCart == null)
             {
                 Items.Add(item);
                 return;
             }
 
-            IncreaseItemQuantity(itemInShoppingCart, item.Quantity);
+            itemInShoppingCart.IncreaseQuantity(item.Quantity);
         }
 
         public void RemoveItem(int productId, decimal quantity)
@@ -28,25 +28,15 @@
             if (itemInShoppingCart == null)
                 return;
 
-            DecreaseItemQuantity(itemInShoppingCart, quantity);
+            itemInShoppingCart.DecreaseQuantity(quantity);
 
-            if (itemInShoppingCart.Quantity <= 0)
+            if (itemInShoppingCart.Quantity == 0)
                 Items.Remove(itemInShoppingCart);
         }
 
         private ShoppingCartItem? GetItem(int productId)
         {
-            return Items.FirstOrDefault(x => x.ProductId == productId);
-        }
-
-        private void IncreaseItemQuantity(ShoppingCartItem item, decimal quantity)
-        {
-            item.Quantity += quantity;
-        }
-
-        private void DecreaseItemQuantity(ShoppingCartItem item, decimal quantity)
-        {
-            item.Quantity -= quantity;
+            return Items.FirstOrDefault(x => x.Product.Id == productId);
         }
     }
 }

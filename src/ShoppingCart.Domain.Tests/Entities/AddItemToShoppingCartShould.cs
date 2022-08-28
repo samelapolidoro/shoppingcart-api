@@ -43,16 +43,16 @@ namespace KingShoppingCart.Domain.Tests.Entities
             Assert.AreEqual(2, shoppingCart.Items.First().Quantity);
         }
 
-        private ShoppingCart CreateShoppingCart()
+        private ShoppingCart CreateShoppingCart(int id = 1)
         {
-            return new ShoppingCart() { Id = 1 };
+            return new ShoppingCart() { Id = id };
         }
 
         private ShoppingCartItem CreateShoppingCartItem(int productId, decimal quantity)
         {
             return new ShoppingCartItem()
             {
-                ProductId = productId,
+                Product = new Product() { Id = productId },
                 Quantity = quantity,
             };
         }
