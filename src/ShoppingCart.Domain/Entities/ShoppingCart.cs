@@ -12,7 +12,24 @@
             if (item.ProductId == default || item.Quantity <= 0)
                 return;
 
-            Items.Add(item);
+            var itemInShoppingCart = GetItem(item.ProductId);
+            if (itemInShoppingCart == null)
+            {
+                Items.Add(item);
+                return;
+            }
+
+            IncreaseItemQuantity(itemInShoppingCart, item.Quantity);
+        }
+
+        private ShoppingCartItem? GetItem(int productId)
+        {
+            return Items.FirstOrDefault(x => x.ProductId == productId);
+        }
+
+        private void IncreaseItemQuantity(ShoppingCartItem item, decimal quantity)
+        {
+            item.Quantity += quantity;
         }
     }
 }

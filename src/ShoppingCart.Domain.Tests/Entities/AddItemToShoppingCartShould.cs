@@ -5,25 +5,15 @@ namespace KingShoppingCart.Domain.Tests.Entities
     [TestClass]
     public class AddItemToShoppingCartShould
     {
-        private readonly ShoppingCart _shoppingCart;
-
-        public AddItemToShoppingCartShould()
-        {
-            _shoppingCart = new ShoppingCart() { Id = 1 };
-        }
-
         [TestMethod]
         public void WhenItemIsValidThenItShouldBeAdded()
         {
-            var item = new ShoppingCartItem()
-            {
-                ProductId = 1,
-                Quantity = 1,
-            };
+            var shoppingCart = CreateShoppingCart();
+            var item = CreateShoppingCartItem(1, 1);
 
-            _shoppingCart.AddItem(item);
+            shoppingCart.AddItem(item);
 
-            Assert.AreEqual(1, _shoppingCart.Items.Count());
+            Assert.AreEqual(1, shoppingCart.Items.Count());
         }
 
         [TestMethod]
@@ -31,15 +21,40 @@ namespace KingShoppingCart.Domain.Tests.Entities
         [DataRow(1, 0, DisplayName = "Quantity is invalid")]
         public void WhenItemIsInvalidThenItShouldNotBeAdded(int productId, double quantity)
         {
-            var item = new ShoppingCartItem()
+            var shoppingCart = CreateShoppingCart();
+            var item = CreateShoppingCartItem(productId, (decimal)quantity);
+
+            shoppingCart.AddItem(item);
+
+            Assert.AreEqual(0, shoppingCart.Items.Count());
+        }
+
+        [TestMethod]
+        public void WhenItemAlreadyExistsInTheShoppingCartThenIncreaseQuantity()
+        {
+            var shoppingCart = CreateShoppingCart();
+            var item = CreateShoppingCartItem(1, 1);
+            shoppingCart.AddItem(item);
+
+            var itemWithSameProductId = CreateShoppingCartItem(1, 1);
+            shoppingCart.AddItem(itemWithSameProductId);
+
+            Assert.AreEqual(1, shoppingCart.Items.Count());
+            Assert.AreEqual(2, shoppingCart.Items.First().Quantity);
+        }
+
+        private ShoppingCart CreateShoppingCart()
+        {
+            return new ShoppingCart() { Id = 1 };
+        }
+
+        private ShoppingCartItem CreateShoppingCartItem(int productId, decimal quantity)
+        {
+            return new ShoppingCartItem()
             {
                 ProductId = productId,
-                Quantity = (decimal)quantity,
+                Quantity = quantity,
             };
-
-            _shoppingCart.AddItem(item);
-
-            Assert.AreEqual(0, _shoppingCart.Items.Count());
         }
     }
 }
