@@ -25,7 +25,9 @@ namespace KingShoppingCart.Infra.Data.Repositories
 
         public async Task<ShoppingCart?> GetByIdAsync(int id)
         {
-            return await _context.ShoppingCarts.Include(i => i.Items).FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.ShoppingCarts
+                                 .Include(i => i.Items).ThenInclude(i => i.Product)
+                                 .FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task SaveChangesAsync()

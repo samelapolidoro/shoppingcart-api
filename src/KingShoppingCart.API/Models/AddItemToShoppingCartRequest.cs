@@ -5,11 +5,10 @@ namespace KingShoppingCart.API.Models
 {
     public class AddItemToShoppingCartRequest
     {
+        public int ShoppingCartId { get; set; }
         public int ProductId { get; set; }
         public decimal Quantity { get; set; }
 
-        [JsonIgnore]
-        public int ShoppingCartId { get; set; }
         [JsonIgnore]
         public Product? Product { get; set; }
         [JsonIgnore]

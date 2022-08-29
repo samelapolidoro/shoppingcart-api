@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using KingShoppingCart.API.Extensions;
 using KingShoppingCart.API.Models;
-using KingShoppingCart.API.NotificationContracts;
 using KingShoppingCart.Domain.Contracts;
 using KingShoppingCart.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -50,23 +49,6 @@ namespace KingShoppingCart.API.Controllers
             await _shoppingCartService.DeleteByIdAsync(id);
 
             return NoContent();
-        }
-
-        [HttpPost("{id}/Item")]
-        public async Task<IActionResult> PostItem(int id, AddItemToShoppingCartRequest request)
-        {
-            request.ShoppingCart = await _shoppingCartService.GetByIdAsync(id);
-            request.Product = await _productService.GetByIdAsync(request.ProductId);
-
-            var contract = new AddItemToShoppingCartNotificationContract(request);
-            if (!contract.IsValid)
-                return ValidationProblem(ModelState.AddErrorsFromNofifications(contract.Notifications));
-
-            request.ShoppingCart!.AddItem(request.Product!, request.Quantity);
-
-            await _shoppingCartService.UpdateAsync(request.ShoppingCart!);
-
-            return StatusCode(StatusCodes.Status201Created, _mapper.Map<ShoppingCartResponse>(request.ShoppingCart!));            
         }
     }
 }
