@@ -1,5 +1,7 @@
-﻿using KingShoppingCart.Domain.Contracts;
+﻿using Flunt.Notifications;
+using KingShoppingCart.Domain.Contracts;
 using KingShoppingCart.Domain.Entities;
+using KingShoppingCart.Domain.NotificationContracts;
 
 namespace KingShoppingCart.Domain.Services
 {
@@ -12,14 +14,14 @@ namespace KingShoppingCart.Domain.Services
             _productRepository = productRepository;
         }
 
-        public async Task<Product> CreateAsync(Product product)
+        public async Task<(Product, IReadOnlyCollection<Notification>)> CreateAsync(Product product)
         {
-            if (string.IsNullOrWhiteSpace(product?.Name))
-                return product!;
+            var contract = new CreateProductNotificationContract(product);
+            if (!contract.IsValid) return (product, contract.Notifications);
 
             await _productRepository.CreateAsync(product);
 
-            return product;
+            return (product, new List<Notification>());
         }
     }
 }

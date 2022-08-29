@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using KingShoppingCart.API.Extensions;
 using KingShoppingCart.API.Models;
 using KingShoppingCart.Domain.Contracts;
 using KingShoppingCart.Domain.Entities;
@@ -22,9 +23,12 @@ namespace KingShoppingCart.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductRequest productRequest)
         {
-            var product = await _productService.CreateAsync(_mapper.Map<Product>(productRequest));
+            var (product, notifications) = await _productService.CreateAsync(_mapper.Map<Product>(productRequest));
 
-            return Ok(product);
+            if (notifications.Any())
+                return ValidationProblem(ModelState.AddErrorsFromNofifications(notifications));
+
+            return StatusCode(StatusCodes.Status201Created, _mapper.Map<CreateProductResponse>(product));
         }
     }
 }

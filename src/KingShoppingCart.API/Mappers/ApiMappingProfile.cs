@@ -9,6 +9,7 @@ namespace KingShoppingCart.API.Mappers
         public ApiMappingProfile()
         {
             CreateMap<CreateProductRequest, Product>();
+            CreateMap<Product, CreateProductResponse>();
         }
     }
 }
