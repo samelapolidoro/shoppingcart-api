@@ -25,6 +25,12 @@ namespace KingShoppingCart.Domain.Services
             return (product, new List<Notification>());
         }
 
+        public async Task DeleteAsync(Product product)
+        {
+            _productRepository.Delete(product);
+            await _productRepository.SaveChangesAsync();
+        }
+
         public async Task<Product?> GetByIdAsync(int productId)
         {
             return await _productRepository.GetByIdAsync(productId);

@@ -18,6 +18,11 @@ namespace KingShoppingCart.Infra.Data.Repositories
            await _context.Products.AddAsync(product);
         }
 
+        public void Delete(Product product)
+        {
+            _context.Products.Remove(product);
+        }
+
         public async Task<Product?> GetByIdAsync(int id)
         {
             return await _context.Products.FirstOrDefaultAsync(i => i.Id == id);

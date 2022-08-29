@@ -38,5 +38,16 @@ namespace KingShoppingCart.API.Controllers
 
             return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProductResponse>(product));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteById(int id)
+        {
+            var product = await _productService.GetByIdAsync(id);
+            if (product == null) return NotFound();
+
+            await _productService.DeleteAsync(product);
+
+            return NoContent();
+        }
     }
 }
