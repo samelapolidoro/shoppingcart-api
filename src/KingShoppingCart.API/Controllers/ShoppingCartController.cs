@@ -20,6 +20,14 @@ namespace KingShoppingCart.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var shoppingCart = await _shoppingCartService.GetByIdAsync(id);
+
+            return shoppingCart == null ? NotFound() : Ok(_mapper.Map<ShoppingCartResponse>(shoppingCart));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post()
         { 

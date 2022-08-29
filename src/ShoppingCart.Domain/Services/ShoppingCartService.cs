@@ -20,6 +20,7 @@ namespace KingShoppingCart.Domain.Services
             if (!contract.IsValid) return (shoppingCart, contract.Notifications);
 
             await _shoppingCartRepository.CreateAsync(shoppingCart);
+            await _shoppingCartRepository.SaveChangesAsync();
 
             return (shoppingCart, new List<Notification>());
         }
@@ -32,6 +33,11 @@ namespace KingShoppingCart.Domain.Services
                 return;
 
             await _shoppingCartRepository.DeleteAsync(shoppingCart);
+        }
+
+        public async Task<ShoppingCart?> GetByIdAsync(int shoppingCartId)
+        {
+            return await _shoppingCartRepository.GetByIdAsync(shoppingCartId);
         }
     }
 }

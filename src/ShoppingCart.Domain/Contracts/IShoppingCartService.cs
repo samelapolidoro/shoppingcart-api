@@ -7,5 +7,6 @@ namespace KingShoppingCart.Domain.Contracts
     {
         Task<(ShoppingCart, IReadOnlyCollection<Notification>)> CreateAsync(ShoppingCart shoppingCart);
         Task DeleteAsync(int shoppingCartId);
+        Task<ShoppingCart?> GetByIdAsync(int shoppingCartId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using KingShoppingCart.Domain.Contracts;
 using KingShoppingCart.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace KingShoppingCart.Infra.Data.Repositories
 {
@@ -22,9 +23,14 @@ namespace KingShoppingCart.Infra.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<ShoppingCart?> GetByIdAsync(int id)
+        public async Task<ShoppingCart?> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.ShoppingCarts.FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }
