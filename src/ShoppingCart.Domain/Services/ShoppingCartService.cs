@@ -40,5 +40,11 @@ namespace KingShoppingCart.Domain.Services
         {
             return await _shoppingCartRepository.GetByIdAsync(shoppingCartId);
         }
+
+        public async Task UpdateAsync(ShoppingCart shoppingCart)
+        {
+            _shoppingCartRepository.Update(shoppingCart);
+            await _shoppingCartRepository.SaveChangesAsync();
+        }
     }
 }

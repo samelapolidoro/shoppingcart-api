@@ -22,6 +22,15 @@
             CalculateTotalAmount();
         }
 
+        public void AddItem(Product product, decimal quantity)
+        {
+            var shoppingCartItem = new ShoppingCartItem() { Product = product };
+
+            shoppingCartItem.IncreaseQuantity(quantity);
+
+            this.AddItem(shoppingCartItem);
+        }
+
         public void RemoveItem(int productId, decimal quantity)
         {
             var itemInShoppingCart = GetItem(productId);

@@ -8,7 +8,7 @@ namespace KingShoppingCart.Domain.NotificationContracts
         public CreateProductNotificationContract(Product product)
         {
             Requires()
-
+                
                 .IsNotNullOrWhiteSpace(product.Name, nameof(product.Name));
         }
     }

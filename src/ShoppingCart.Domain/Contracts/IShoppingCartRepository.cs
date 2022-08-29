@@ -8,5 +8,6 @@ namespace KingShoppingCart.Domain.Contracts
         Task<ShoppingCart?> GetByIdAsync(int id);
         void Delete(ShoppingCart shoppingCart);
         Task SaveChangesAsync();
+        void Update(ShoppingCart shoppingCart);
     }
 }
