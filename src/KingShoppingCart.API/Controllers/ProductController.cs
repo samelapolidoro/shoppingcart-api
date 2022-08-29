@@ -42,10 +42,7 @@ namespace KingShoppingCart.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteById(int id)
         {
-            var product = await _productService.GetByIdAsync(id);
-            if (product == null) return NotFound();
-
-            await _productService.DeleteAsync(product);
+            await _productService.DeleteByIdAsync(id);
 
             return NoContent();
         }
