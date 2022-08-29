@@ -20,6 +20,14 @@ namespace KingShoppingCart.API.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var product = await _productService.GetByIdAsync(id);
+
+            return product == null ? NotFound() : Ok(_mapper.Map<ProductResponse>(product));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(CreateProductRequest productRequest)
         {
@@ -28,7 +36,7 @@ namespace KingShoppingCart.API.Controllers
             if (notifications.Any())
                 return ValidationProblem(ModelState.AddErrorsFromNofifications(notifications));
 
-            return StatusCode(StatusCodes.Status201Created, _mapper.Map<CreateProductResponse>(product));
+            return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProductResponse>(product));
         }
     }
 }

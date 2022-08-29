@@ -20,8 +20,14 @@ namespace KingShoppingCart.Domain.Services
             if (!contract.IsValid) return (product, contract.Notifications);
 
             await _productRepository.CreateAsync(product);
+            await _productRepository.SaveChangesAsync();
 
             return (product, new List<Notification>());
+        }
+
+        public async Task<Product?> GetByIdAsync(int productId)
+        {
+            return await _productRepository.GetByIdAsync(productId);
         }
     }
 }

@@ -6,5 +6,6 @@ namespace KingShoppingCart.Domain.Contracts
     public interface IProductService
     {
         Task<(Product, IReadOnlyCollection<Notification>)> CreateAsync(Product product);
+        Task<Product?> GetByIdAsync(int productId);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using KingShoppingCart.Domain.Contracts;
 using KingShoppingCart.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace KingShoppingCart.Infra.Data.Repositories
 {
@@ -15,6 +16,16 @@ namespace KingShoppingCart.Infra.Data.Repositories
         public async Task CreateAsync(Product product)
         {
            await _context.Products.AddAsync(product);
+        }
+
+        public async Task<Product?> GetByIdAsync(int id)
+        {
+            return await _context.Products.FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }
