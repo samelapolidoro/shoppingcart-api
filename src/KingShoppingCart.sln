@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingShoppingCart.Domain", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KingShoppingCart.Domain.Tests", "ShoppingCart.Domain.Tests\KingShoppingCart.Domain.Tests.csproj", "{587BF6F7-946A-4F8D-BEEB-959CB25D57F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingShoppingCart.API", "KingShoppingCart.API\KingShoppingCart.API.csproj", "{EB4EB50F-47E5-47AD-8070-8CCA027B3B47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KingShoppingCart.Infra.Data", "KingShoppingCart.Infra.Data\KingShoppingCart.Infra.Data.csproj", "{65E4005E-651D-4B79-87AE-07AC5E176257}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{587BF6F7-946A-4F8D-BEEB-959CB25D57F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{587BF6F7-946A-4F8D-BEEB-959CB25D57F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{587BF6F7-946A-4F8D-BEEB-959CB25D57F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB4EB50F-47E5-47AD-8070-8CCA027B3B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB4EB50F-47E5-47AD-8070-8CCA027B3B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB4EB50F-47E5-47AD-8070-8CCA027B3B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB4EB50F-47E5-47AD-8070-8CCA027B3B47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65E4005E-651D-4B79-87AE-07AC5E176257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E4005E-651D-4B79-87AE-07AC5E176257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E4005E-651D-4B79-87AE-07AC5E176257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E4005E-651D-4B79-87AE-07AC5E176257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

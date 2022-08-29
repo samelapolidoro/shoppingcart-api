@@ -4,6 +4,6 @@ namespace KingShoppingCart.Domain.Contracts
 {
     public interface IProductRepository
     {
-        Task<Product> CreateAsync(Product product);
+        Task CreateAsync(Product product);
     }
 }

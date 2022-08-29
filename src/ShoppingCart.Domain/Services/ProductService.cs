@@ -15,9 +15,11 @@ namespace KingShoppingCart.Domain.Services
         public async Task<Product> CreateAsync(Product product)
         {
             if (string.IsNullOrWhiteSpace(product?.Name))
-                return product;
+                return product!;
 
-            return await _productRepository.CreateAsync(product);
+            await _productRepository.CreateAsync(product);
+
+            return product;
         }
     }
 }
