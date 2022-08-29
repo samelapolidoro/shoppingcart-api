@@ -38,5 +38,13 @@ namespace KingShoppingCart.API.Controllers
 
             return StatusCode(StatusCodes.Status201Created, _mapper.Map<CreateShoppingCartResponse>(shoppingCart));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteById(int id)
+        {
+            await _shoppingCartService.DeleteByIdAsync(id);
+
+            return NoContent();
+        }
     }
 }

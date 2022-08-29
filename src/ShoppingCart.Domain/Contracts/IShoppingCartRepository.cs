@@ -6,7 +6,7 @@ namespace KingShoppingCart.Domain.Contracts
     {
         Task CreateAsync(ShoppingCart shoppingCart);
         Task<ShoppingCart?> GetByIdAsync(int id);
-        Task DeleteAsync(ShoppingCart shoppingCart);
+        void Delete(ShoppingCart shoppingCart);
         Task SaveChangesAsync();
     }
 }

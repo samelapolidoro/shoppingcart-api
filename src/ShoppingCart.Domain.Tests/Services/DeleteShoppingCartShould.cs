@@ -23,9 +23,9 @@ namespace KingShoppingCart.Domain.Tests.Services
             var shoppingCart = CreateShoppingCart(1);
             _shoppingCartRepositoryMock.Setup(i => i.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(shoppingCart);
 
-            await _shoppingCartService.DeleteAsync(shoppingCart.Id);
+            await _shoppingCartService.DeleteByIdAsync(shoppingCart.Id);
 
-            _shoppingCartRepositoryMock.Verify(i => i.DeleteAsync(It.IsAny<ShoppingCart>()), Times.Once);
+            _shoppingCartRepositoryMock.Verify(i => i.Delete(It.IsAny<ShoppingCart>()), Times.Once);
         }
 
         [TestMethod]
@@ -34,9 +34,9 @@ namespace KingShoppingCart.Domain.Tests.Services
             ShoppingCart? shoppingCart = null;
             _shoppingCartRepositoryMock.Setup(i => i.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(() => shoppingCart);
 
-            await _shoppingCartService.DeleteAsync(1);
+            await _shoppingCartService.DeleteByIdAsync(1);
 
-            _shoppingCartRepositoryMock.Verify(i => i.DeleteAsync(It.IsAny<ShoppingCart>()), Times.Never);
+            _shoppingCartRepositoryMock.Verify(i => i.Delete(It.IsAny<ShoppingCart>()), Times.Never);
         }
 
         private ShoppingCart CreateShoppingCart(int id = 1)

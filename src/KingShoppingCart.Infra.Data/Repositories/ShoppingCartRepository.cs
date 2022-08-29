@@ -18,9 +18,9 @@ namespace KingShoppingCart.Infra.Data.Repositories
             await _context.ShoppingCarts.AddAsync(shoppingCart);
         }
 
-        public Task DeleteAsync(ShoppingCart shoppingCart)
+        public void Delete(ShoppingCart shoppingCart)
         {
-            throw new NotImplementedException();
+            _context.ShoppingCarts.Remove(shoppingCart);
         }
 
         public async Task<ShoppingCart?> GetByIdAsync(int id)
