@@ -10,5 +10,6 @@ namespace KingShoppingCart.Infra.Data
         }
 
         internal DbSet<Product> Products => Set<Product>();
+        internal DbSet<ShoppingCart> ShoppingCarts => Set<ShoppingCart>();
     }
 }

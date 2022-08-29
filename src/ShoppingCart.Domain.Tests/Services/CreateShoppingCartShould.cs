@@ -28,7 +28,7 @@ namespace KingShoppingCart.Domain.Tests.Services
         }
 
         [TestMethod]
-        public async Task WhenShoppingCartIsInvalidThenItShouldNotBeCreated()
+        public async Task WhenShoppingCartAlreadyExistsThenItShouldNotBeCreated()
         {
             var shoppingCart = new ShoppingCart() { Id = 1 };
 

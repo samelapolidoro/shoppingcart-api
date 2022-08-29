@@ -10,6 +10,8 @@ namespace KingShoppingCart.API.Mappers
         {
             CreateMap<CreateProductRequest, Product>();
             CreateMap<Product, CreateProductResponse>();
+
+            CreateMap<ShoppingCart, CreateShoppingCartResponse>();
         }
     }
 }
